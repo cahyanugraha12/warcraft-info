@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00FFFFFF"
-    tools:context=".ui.landing.LandingActivity">
+    tools:context=".landing.ui.LandingActivity">
 
     <LinearLayout
         android:id="@+id/linear_layout_button_profile"

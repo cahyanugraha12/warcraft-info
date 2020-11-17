@@ -6,7 +6,7 @@
 
     <!-- Strings related to login -->
     <string name="button_text_login">Login using Blizzard OAuth</string>
-    <string name="description_login_service">Login Service for Warcraft Info App.</string>
+    <string name="description_auth_service">Auth Service for Warcraft Info App.</string>
     <string name="toast_login_failed">Login failed with status code: </string>
 
     <string name="label_profile">Profile</string>
@@ -36,4 +36,6 @@
     <string name="description_item_trinket_2">Image of equipped item on second trinket slot.</string>
     <string name="description_item_main_hand">Image of equipped item on main hand slot.</string>
     <string name="description_item_off_hand">Image of equipped item on off hand slot.</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 </resources>

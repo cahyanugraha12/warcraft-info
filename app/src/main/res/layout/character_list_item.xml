@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container_character_list_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".character.ui.CharacterActivity">
 
     <ImageView
         android:id="@+id/image_view_character_avatar"

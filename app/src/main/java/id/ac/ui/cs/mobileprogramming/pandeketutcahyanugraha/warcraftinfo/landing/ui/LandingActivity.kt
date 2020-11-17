@@ -1,0 +1,21 @@
+package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.landing.ui
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
+// Used for Hilt Dependency Injection, move to wherever activity assigned as launcher
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.WarcraftInfoApplication
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.LandingActivityBinding
+
+@AndroidEntryPoint
+class LandingActivity : AppCompatActivity() {
+
+    private lateinit var binding: LandingActivityBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = LandingActivityBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
+}

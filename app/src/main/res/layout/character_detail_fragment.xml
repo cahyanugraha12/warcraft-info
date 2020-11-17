@@ -5,8 +5,7 @@
     android:id="@+id/fragment_inner_container_character_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.character.fragment.CharacterDetailFragment">
-
+    tools:context=".character.ui.fragment.CharacterDetailFragment">
 
     <ImageView
         android:id="@+id/image_view_character_main_media"

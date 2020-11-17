@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
-            // We've bound to LocalService, cast the IBinder and get LocalService instance
             val binder = service as LoginService.LoginServiceBinder
             loginService = binder.getService()
             loginServiceBound = true
@@ -29,13 +28,13 @@ class LoginActivity : AppCompatActivity() {
             val data: Uri? = intent?.data
 
             if (action == Intent.ACTION_VIEW && loginServiceBound) {
-                val code = data!!.getQueryParameter("code")
-                if (code != null) {
-                    loginService.requestAccessToken(code) { response ->
-                        // TODO CHANGE TO METHOD AND SAVE IN SHARED PREFERENCE
-                        println(response.toString())
-                    }
+                val accessToken = data?.getQueryParameter("access_token")
+                val errorStatusCode = data?.getQueryParameter("error_status_code")
+                if (accessToken != null) {
+                    println(accessToken)
+                    // TODO CHANGE TO METHOD AND SAVE IN SHARED PREFERENCE
                 } else {
+                    println(errorStatusCode)
                     //TODO Show message if deep link intent fail
                 }
             }

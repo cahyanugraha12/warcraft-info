@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/landing_activity_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    tools:context=".ui.landing.LandingActivity">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_button_profile"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="64dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/image_button_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/description_profile"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/profile_icon" />
+
+        <TextView
+            android:id="@+id/label_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_profile"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_button_auction_house"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linear_layout_button_quest"
+        app:layout_constraintStart_toEndOf="@+id/linear_layout_button_profile"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/image_button_auction_house"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/description_auction_house"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/auction_house_icon"
+            tools:layout_editor_absoluteX="140dp"
+            tools:layout_editor_absoluteY="260dp" />
+
+        <TextView
+            android:id="@+id/label_auction_house"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_auction_house"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_button_quest"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        android:layout_marginEnd="64dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/image_button_quest"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:contentDescription="@string/description_quest"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/quest_icon" />
+
+        <TextView
+            android:id="@+id/label_quest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_quest"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

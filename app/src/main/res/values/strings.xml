@@ -2,17 +2,12 @@
     <string name="app_name">Warcraft Info</string>
     <!-- Strings related to login -->
     <string name="button_text_login">Login using Blizzard OAuth</string>
+    <string name="description_login_service">Login Service for Warcraft Info App.</string>
 
-    <string name="description_login_service">Login Service for Warcraft Info App</string>
-
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_profile">Profile</string>
+    <string name="description_profile">Showing all your characters in World of Warcraft.</string>
+    <string name="label_auction_house">Auction House</string>
+    <string name="description_auction_house">Showing current listing in Auction House.</string>
+    <string name="label_quest">Quest</string>
+    <string name="description_quest">List of all Quest available in World of Warcraft.</string>
 </resources>

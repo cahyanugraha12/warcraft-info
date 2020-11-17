@@ -1,21 +1,15 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.service
 
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.service.model.OAuthAccessTokenResponse
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.service.dao.AccountProfileSummary
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BlizzardAPI {
 
-    @FormUrlEncoded
-    @POST("/oauth/token")
-    fun AccessTokenRequest(
-        @Header("Authorization") authorizationHeader: String,
-        @Field("redirect_uri") redirectUri: String,
-        @Field("scope") scope: String,
-        @Field("grant_type") grantType: String,
-        @Field("code") code: String
-    ): Call<OAuthAccessTokenResponse>
+    @GET("/profile/user/wow")
+    fun getProfileSummary(
+        @Query("namespace") namespace: String,
+        @Query("locale") locale: String,
+        @Query("access_token") accessToken: String
+    ): Call<AccountProfileSummary>
 }

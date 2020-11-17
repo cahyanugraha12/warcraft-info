@@ -15,4 +15,25 @@
     <string name="description_auction_house">Showing current listing in Auction House.</string>
     <string name="label_quest">Quest</string>
     <string name="description_quest">List of all Quest available in World of Warcraft.</string>
+
+    <string name="description_character_avatar">Avatar of your character.</string>
+    <string name="fallback_item_slot_empty">Empty slot</string>
+    <string name="description_item_head">Image of equipped item on head slot.</string>
+    <string name="description_item_neck">Image of equipped item on neck slot.</string>
+    <string name="description_item_shoulder">Image of equipped item on shoulder slot.</string>
+    <string name="description_item_back">Image of equipped item on back slot.</string>
+    <string name="description_item_chest">Image of equipped item on chest slot.</string>
+    <string name="description_item_shirt">Image of equipped item on shirt slot.</string>
+    <string name="description_item_tabard">Image of equipped item on tabard slot.</string>
+    <string name="description_item_wrist">Image of equipped item on wrist slot.</string>
+    <string name="description_item_hands">Image of equipped item on hands slot.</string>
+    <string name="description_item_waist">Image of equipped item on waist slot.</string>
+    <string name="description_item_legs">Image of equipped item on legs slot.</string>
+    <string name="description_item_feet">Image of equipped item on feet slot.</string>
+    <string name="description_item_finger_1">Image of equipped item on first finger slot.</string>
+    <string name="description_item_finger_2">Image of equipped item on second finger slot.</string>
+    <string name="description_item_trinket_1">Image of equipped item on first trinket slot.</string>
+    <string name="description_item_trinket_2">Image of equipped item on second trinket slot.</string>
+    <string name="description_item_main_hand">Image of equipped item on main hand slot.</string>
+    <string name="description_item_off_hand">Image of equipped item on off hand slot.</string>
 </resources>

@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ui.landing.LandingActivity">
+        <activity android:name=".ui.character.CharacterActivity"></activity>
+        <activity android:name=".ui.landing.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

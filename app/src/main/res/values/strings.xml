@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Warcraft Info</string>
+
+    <string name="common_preferences">id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.commonpreferences</string>
+    <string name="access_token_key">access_token</string>
+
     <!-- Strings related to login -->
     <string name="button_text_login">Login using Blizzard OAuth</string>
     <string name="description_login_service">Login Service for Warcraft Info App.</string>
+    <string name="toast_login_failed">Login failed with status code: </string>
 
     <string name="label_profile">Profile</string>
     <string name="description_profile">Showing all your characters in World of Warcraft.</string>

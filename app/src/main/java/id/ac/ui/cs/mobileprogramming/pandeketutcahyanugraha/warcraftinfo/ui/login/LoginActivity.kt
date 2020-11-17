@@ -8,6 +8,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
+import android.widget.Toast
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.LoginActivityBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.service.LoginService
@@ -31,11 +33,14 @@ class LoginActivity : AppCompatActivity() {
                 val accessToken = data?.getQueryParameter("access_token")
                 val errorStatusCode = data?.getQueryParameter("error_status_code")
                 if (accessToken != null) {
-                    println(accessToken)
-                    // TODO CHANGE TO METHOD AND SAVE IN SHARED PREFERENCE
+                    loginService.saveAccessToken(accessToken)
+                    // TODO Start Activity with Result
                 } else {
-                    println(errorStatusCode)
-                    //TODO Show message if deep link intent fail
+                    Toast.makeText(
+                        this@LoginActivity,
+                        getString(R.string.toast_login_failed).plus(errorStatusCode),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }

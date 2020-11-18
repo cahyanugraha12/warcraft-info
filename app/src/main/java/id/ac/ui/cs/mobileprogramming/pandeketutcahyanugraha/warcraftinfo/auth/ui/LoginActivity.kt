@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
                 val errorStatusCode = data?.getQueryParameter("error_status_code")
                 if (accessToken != null) {
                     authService.saveAccessToken(accessToken)
-                    // TODO Start Activity with Result
+                    finish()
                 } else {
                     Toast.makeText(
                         this@LoginActivity,
@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.buttonLogin.setOnClickListener {
-            val authorizationCodeRequestURL = StringBuilder().append(WarcraftInfoConstant.BASE_API_URI)
+            val authorizationCodeRequestURL = StringBuilder().append(WarcraftInfoConstant.BASE_AUTH_API_URI)
                 .append(WarcraftInfoConstant.AUTHORIZATION_CODE_REQUEST_PATH)
                 .append("?client_id=").append(WarcraftInfoConstant.API_CLIENT_ID)
                 .append("&scope=").append(WarcraftInfoConstant.WOW_PROFILE_SCOPE)

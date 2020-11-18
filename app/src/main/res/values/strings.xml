@@ -4,7 +4,9 @@
     <string name="common_preferences">id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.commonpreferences</string>
     <string name="access_token_key">access_token</string>
 
-    <!-- Strings related to login -->
+    <string name="message_is_loading">Loading data...</string>
+    <string name="message_data_loading_failed">Data failed to load.</string>
+
     <string name="button_text_login">Login using Blizzard OAuth</string>
     <string name="description_auth_service">Auth Service for Warcraft Info App.</string>
     <string name="toast_login_failed">Login failed with status code: </string>
@@ -15,6 +17,10 @@
     <string name="description_auction_house">Showing current listing in Auction House.</string>
     <string name="label_quest">Quest</string>
     <string name="description_quest">List of all Quest available in World of Warcraft.</string>
+
+    <string name="label_character_list_character_name">
+        %1$s, Level %2$d %3$s %4$s %5$s %6$s on Realm %7$s"
+    </string>
 
     <string name="description_character_avatar">Avatar of your character.</string>
     <string name="fallback_item_slot_empty">Empty slot</string>

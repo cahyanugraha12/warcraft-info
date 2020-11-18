@@ -3,13 +3,14 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.components.ServiceComponent
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-@InstallIn(ServiceComponent::class)
+@InstallIn(ApplicationComponent::class)
 object BlizzardAPIModule {
 
     @Provides

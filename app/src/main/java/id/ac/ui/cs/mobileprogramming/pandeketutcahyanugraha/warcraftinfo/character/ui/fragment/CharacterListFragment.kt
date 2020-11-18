@@ -20,6 +20,8 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterSummary
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.CharacterListFragmentBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel.CharacterViewModel
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 
 @AndroidEntryPoint
 class CharacterListFragment : Fragment() {
@@ -112,24 +114,25 @@ class CharacterListFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: CharacterSummaryListViewHolder, position: Int) {
-            val item = characterSummaryList[position]
-            if (item.avatarMediaLink != "") {
+            val character = characterSummaryList[position]
+            if (character.avatarMediaLink != "") {
                 Picasso
                     .get()
-                    .load(item.avatarMediaLink)
-                    .resize(60, 60)
+                    .load(character.avatarMediaLink)
+                    .transform(CropCircleTransformation())
+                    .resize(100, 100)
                     .into(holder.characterAvatar)
             }
             holder.characterName.text = context.getString(
                 R.string.label_character_list_character_name,
-                item.name,
-                item.level,
-                item.faction,
-                item.gender,
-                item.race,
-                item.characterClass,
-                item.realm
+                character.name,
+                character.faction,
+                character.gender,
+                character.race,
+                character.characterClass
             )
+            holder.characterLevel.text = character.level.toString()
+            holder.characterRealm.text = character.realm
 
             with(holder.itemView) {
                 tag = position
@@ -142,6 +145,8 @@ class CharacterListFragment : Fragment() {
         inner class CharacterSummaryListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val characterAvatar: ImageView = view.findViewById(R.id.image_view_character_avatar)
             val characterName: TextView = view.findViewById(R.id.text_view_character_name)
+            val characterLevel: TextView = view.findViewById(R.id.text_view_character_level)
+            val characterRealm: TextView = view.findViewById(R.id.text_view_realm_name)
         }
     }
 }

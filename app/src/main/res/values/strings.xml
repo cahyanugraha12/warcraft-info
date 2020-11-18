@@ -18,8 +18,9 @@
     <string name="label_quest">Quest</string>
     <string name="description_quest">List of all Quest available in World of Warcraft.</string>
 
+    <string name="header_character_list">Character List</string>
     <string name="label_character_list_character_name">
-        %1$s, Level %2$d %3$s %4$s %5$s %6$s on Realm %7$s"
+        %1$s, %2$s %3$s %4$s %5$s"
     </string>
 
     <string name="description_character_avatar">Avatar of your character.</string>

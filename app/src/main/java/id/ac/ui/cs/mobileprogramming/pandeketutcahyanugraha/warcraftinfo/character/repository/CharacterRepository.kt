@@ -51,11 +51,14 @@ class CharacterRepository @Inject constructor(
                         ).execute()
                     }
                     val characterMediaSummaryResponse = characterMediaSummaryResponseDeferred.await()
+                    val characterMediaSummaryResponseBody = characterMediaSummaryResponse.body()
 
-                    characterSummaryList.add(CharacterSummary.fromCharacterAndMedia(
-                        character,
-                        characterMediaSummaryResponse.body()
-                    ))
+                    if (characterMediaSummaryResponse.isSuccessful && characterMediaSummaryResponseBody != null) {
+                        characterSummaryList.add(CharacterSummary.fromCharacterAndMedia(
+                            character,
+                            characterMediaSummaryResponseBody
+                        ))
+                    }
                 }
             }.awaitAll()
         }

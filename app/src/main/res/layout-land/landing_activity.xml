@@ -5,7 +5,7 @@
     android:id="@+id/container_landing_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00FFFFFF"
+    android:background="@color/neutral_black"
     tools:context=".landing.ui.LandingActivity">
 
     <LinearLayout
@@ -24,12 +24,14 @@
             android:id="@+id/image_button_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:background="@color/neutral_white"
             android:contentDescription="@string/description_profile"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/profile_icon" />
 
         <TextView
             android:id="@+id/label_profile"
+            style="@style/text_primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_profile"
@@ -55,6 +57,7 @@
             android:id="@+id/image_button_auction_house"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:background="@color/neutral_white"
             android:contentDescription="@string/description_auction_house"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/auction_house_icon"
@@ -63,6 +66,7 @@
 
         <TextView
             android:id="@+id/label_auction_house"
+            style="@style/text_primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_auction_house"
@@ -88,12 +92,14 @@
             android:id="@+id/image_button_quest"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:background="@color/neutral_white"
             android:contentDescription="@string/description_quest"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/quest_icon" />
 
         <TextView
             android:id="@+id/label_quest"
+            style="@style/text_primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_quest"

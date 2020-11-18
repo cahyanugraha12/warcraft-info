@@ -5,15 +5,19 @@
     android:id="@+id/fragment_inner_container_character_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".character.ui.fragment.CharacterListFragment" >
+    android:background="@color/neutral_black"
+    tools:context=".character.ui.fragment.CharacterListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_loading_character_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/message_loading_character_list"
+            style="@style/text_secondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/message_is_loading"
@@ -25,16 +29,42 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_data_character_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:visibility="gone">
+        android:background="@color/neutral_black"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/header_character_list"
+            style="@style/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/header_character_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/border_bottom_header_character_list"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view_character_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_character_list" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_character_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_character_list"
             tools:listitem="@layout/character_list_item" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

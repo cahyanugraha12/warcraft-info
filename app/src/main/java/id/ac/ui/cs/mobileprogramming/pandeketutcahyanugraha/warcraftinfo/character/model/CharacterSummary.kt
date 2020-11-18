@@ -18,18 +18,23 @@ data class CharacterSummary(
     val level: Int
 ) {
     companion object {
-        fun fromCharacterAndMedia(character: Character, media: CharacterMediaSummary?): CharacterSummary {
+        fun fromCharacterAndMedia(character: Character, media: CharacterMediaSummary): CharacterSummary {
             var avatarMediaLink: String = ""
             var mainMediaLink: String = ""
 
-            if (media?.assets != null) {
-                for (asset in media.assets) {
+            if (media.assets != null) {
+                // Handle US-Oceania response variant
+                for (asset in media.assets!!) {
                     if (asset.key == WarcraftInfoConstant.MEDIA_AVATAR_KEY) {
                         avatarMediaLink = asset.value
                     } else if (asset.key == WarcraftInfoConstant.MEDIA_MAIN_KEY) {
                         mainMediaLink = asset.value
                     }
                 }
+            } else if (media.avatarUrl != null && media.mainUrl != null) {
+                // Handle US-North America response variant
+                avatarMediaLink = media.avatarUrl
+                mainMediaLink = media.mainUrl
             }
 
             return CharacterSummary(

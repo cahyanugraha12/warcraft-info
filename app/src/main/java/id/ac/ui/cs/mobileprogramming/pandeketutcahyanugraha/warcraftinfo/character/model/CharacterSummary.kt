@@ -11,6 +11,7 @@ data class CharacterSummary(
     val mainMediaLink: String,
     val name: String,
     val realm: String,
+    val realmSlug: String,
     val characterClass: String,
     val race: String,
     val gender: String,
@@ -24,7 +25,7 @@ data class CharacterSummary(
 
             if (media.assets != null) {
                 // Handle US-Oceania response variant
-                for (asset in media.assets!!) {
+                for (asset in media.assets) {
                     if (asset.key == WarcraftInfoConstant.MEDIA_AVATAR_KEY) {
                         avatarMediaLink = asset.value
                     } else if (asset.key == WarcraftInfoConstant.MEDIA_MAIN_KEY) {
@@ -43,6 +44,7 @@ data class CharacterSummary(
                 mainMediaLink,
                 character.name,
                 character.realm.name,
+                character.realm.slug,
                 character.playableClass.name,
                 character.playableRace.name,
                 character.gender.name,

@@ -10,10 +10,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_loading_character_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black"
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/message_loading_character_detail"
+            style="@style/text_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/message_is_loading"
@@ -29,20 +32,34 @@
         android:id="@+id/container_data_character_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:visibility="gone">
+        android:background="@color/neutral_black"
+        tools:visibility="visible">
 
         <ImageView
             android:id="@+id/image_view_character_main_media"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <View
+            android:id="@+id/border_bottom_image_view_character_main_media"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/scroll_view_character_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_character_main_media" />
 
         <ScrollView
             android:id="@+id/scroll_view_character_items"
-            android:layout_width="409dp"
-            android:layout_height="697dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view_character_main_media">
@@ -56,15 +73,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_head"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_head"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_head"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -72,8 +85,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_head"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -84,15 +96,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_neck"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_neck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_neck"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -100,8 +108,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_neck"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -112,15 +119,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_shoulder"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_shoulder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_shoulder"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -128,8 +131,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_shoulder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -140,15 +142,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_back"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_back"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -156,8 +154,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -168,15 +165,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_chest"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_chest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_chest"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -184,8 +177,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_chest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -196,15 +188,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_shirt"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_shirt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_shirt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -212,8 +200,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_shirt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -224,15 +211,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_tabard"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_tabard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_tabard"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -240,8 +223,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_tabard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -252,15 +234,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_wrist"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_wrist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_wrist"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -268,8 +246,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_wrist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -280,15 +257,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_hands"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_hands"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_hands"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -296,8 +269,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_hands"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -308,15 +280,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_waist"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_waist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_waist"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -324,8 +292,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_waist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -336,15 +303,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_legs"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_legs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_legs"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -352,8 +315,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_legs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -364,15 +326,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_feet"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_feet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_feet"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -380,8 +338,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_feet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -392,15 +349,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_finger_1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_finger_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_finger_1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -408,8 +361,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_finger_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -420,15 +372,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_finger_2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_finger_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_finger_2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -436,8 +384,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_finger_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -452,11 +399,7 @@
 
                     <ImageView
                         android:id="@+id/image_view_item_trinket_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_trinket_1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -464,8 +407,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_trinket_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -476,15 +418,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_trinket_2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_trinket_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_trinket_2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -492,8 +430,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_trinket_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -504,15 +441,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_main_hand"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_main_hand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_main_hand"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -520,8 +453,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_main_hand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"
@@ -532,15 +464,11 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container_character_item_off_hand"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/image_view_item_off_hand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
+                        style="@style/character_detail_item_image"
                         android:contentDescription="@string/description_item_off_hand"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -548,8 +476,7 @@
 
                     <TextView
                         android:id="@+id/text_view_item_off_hand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/character_detail_item_text"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/fallback_item_slot_empty"

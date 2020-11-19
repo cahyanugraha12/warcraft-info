@@ -52,4 +52,15 @@
         <item name="font">@font/avenir_light</item>
         <item name="android:textColor">@color/secondary_color</item>
     </style>
+
+    <style name="character_detail_item_image">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+    <style name="character_detail_item_text" parent="@style/text_secondary">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

@@ -94,7 +94,7 @@ class CharacterActivity : AppCompatActivity(), CharacterListFragment.OnCharacter
     }
 
     override fun onCharacterSelected() {
-        if (twoPane) {
+        if (!twoPane) {
             supportFragmentManager.beginTransaction()
                 .replace(binding.containerCharacterActivity.id, CharacterDetailFragment.newInstance())
                 .addToBackStack(null)

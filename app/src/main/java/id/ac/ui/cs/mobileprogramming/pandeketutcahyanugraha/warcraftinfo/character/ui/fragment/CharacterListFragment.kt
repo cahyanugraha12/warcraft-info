@@ -8,10 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -21,7 +19,9 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.charact
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.CharacterListFragmentBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel.CharacterViewModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CharacterListFragment : Fragment() {
@@ -44,13 +44,13 @@ class CharacterListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val viewModel: CharacterViewModel by activityViewModels()
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+        viewModel.characterListLoadingStatus.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             if (isLoading) {
                 binding.containerLoadingCharacterList.visibility = View.VISIBLE
                 binding.containerDataCharacterList.visibility = View.GONE
             } else {
                 // TODO Further distinguish between actual loading error and access token null/expired
-                if (viewModel.isSuccess) {
+                if (viewModel.characterListLoadingStatus.isSuccess) {
                     binding.containerLoadingCharacterList.visibility = View.GONE
                     binding.containerDataCharacterList.visibility = View.VISIBLE
                 } else {
@@ -62,7 +62,7 @@ class CharacterListFragment : Fragment() {
         })
         viewModel.characterSummaryList.observe(viewLifecycleOwner, Observer { characterSummaryList ->
             if (characterSummaryList.isEmpty()) {
-                viewModel.isSuccess = false
+                viewModel.characterListLoadingStatus.isSuccess = false
             } else {
                 binding.recyclerViewCharacterList.layoutManager = activity?.let {
                     LinearLayoutManager(it)

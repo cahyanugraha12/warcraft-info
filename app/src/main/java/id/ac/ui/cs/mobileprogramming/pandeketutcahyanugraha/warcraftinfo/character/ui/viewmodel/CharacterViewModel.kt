@@ -1,43 +1,88 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel
 
-import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterItem
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterSummary
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.repository.CharacterRepository
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.APIResponse
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.utils.DataLoadingStatus
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.model.Item
 import kotlinx.coroutines.launch
 
 class CharacterViewModel @ViewModelInject constructor(
     private val characterRepository: CharacterRepository
 ) : ViewModel() {
-    // TODO Maybe move to a common class
-    var isLoading: MutableLiveData<Boolean> = MutableLiveData(true)
-    var isSuccess: Boolean = false
-    var errorCode: Int? = null
+    val characterListLoadingStatus: DataLoadingStatus = DataLoadingStatus()
+    val characterDetailLoadingStatus: DataLoadingStatus = DataLoadingStatus()
 
     var currentCharacterSummarySelectedPosition: MutableLiveData<Int?> = MutableLiveData(null)
     var characterSummaryList: MutableLiveData<List<CharacterSummary>> = MutableLiveData(
         listOf()
     )
-//    lateinit var characterSummaryIdList: List<Int>
-//    lateinit var characterSummaryMap: Map<Int, CharacterSummary>
+    @Suppress("UNCHECKED_CAST")
+    var characterItemMap: MutableMap<String, MutableLiveData<CharacterItem?>> = mutableMapOf(
+        WarcraftInfoConstant.SLOT_HEAD to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_NECK to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_SHOULDER to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_BACK to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_CHEST to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_SHIRT to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_TABARD to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_WRIST to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_HANDS to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_WAIST to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_LEGS to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_FEET to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_FINGER_1 to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_FINGER_2 to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_TRINKET_1 to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_TRINKET_2 to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_MAIN_HAND to MutableLiveData(null) as MutableLiveData<CharacterItem?>,
+        WarcraftInfoConstant.SLOT_OFF_HAND to MutableLiveData(null) as MutableLiveData<CharacterItem?>
+    )
 
     init {
         viewModelScope.launch {
+            characterListLoadingStatus.isLoading.value = true
             val characterSummaryListAPIResponse = characterRepository.getCharacterSummary()
             if (characterSummaryListAPIResponse is APIResponse.Success) {
-                isSuccess = true
+                characterListLoadingStatus.isSuccess = true
                 if (characterSummaryListAPIResponse.data != null && characterSummaryListAPIResponse.data.isNotEmpty()) {
-                    currentCharacterSummarySelectedPosition.value = 1
                     characterSummaryList.value = characterSummaryListAPIResponse.data
+                    currentCharacterSummarySelectedPosition.value = 1
                 }
             } else {
-                errorCode = characterSummaryListAPIResponse.code
+                characterListLoadingStatus.errorCode = characterSummaryListAPIResponse.code
             }
-            isLoading.value = false
+            characterListLoadingStatus.isLoading.value = false
+        }
+    }
+
+    fun getCharacterItemList() {
+        viewModelScope.launch {
+            characterDetailLoadingStatus.isLoading.value = true
+            val currentSelectedCharacterSummary = characterSummaryList.value?.get(
+                currentCharacterSummarySelectedPosition.value!!
+            )
+            val characterListItemAPIResponse = characterRepository.getCharacterItemList(
+                currentSelectedCharacterSummary?.realmSlug!!,
+                currentSelectedCharacterSummary.name
+            )
+            if (characterListItemAPIResponse is APIResponse.Success) {
+                characterDetailLoadingStatus.isSuccess = true
+                if (characterListItemAPIResponse.data != null && characterListItemAPIResponse.data.isNotEmpty()) {
+                    for (characterItem in characterListItemAPIResponse.data) {
+                        characterItemMap[characterItem.slot]?.value = characterItem
+                    }
+                }
+            } else {
+                characterDetailLoadingStatus.errorCode = characterListItemAPIResponse.code
+            }
+            characterDetailLoadingStatus.isLoading.value = false
         }
     }
 }

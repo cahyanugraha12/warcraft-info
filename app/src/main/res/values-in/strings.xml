@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Warcraft Info</string>
+
+    <string name="common_preferences">id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.commonpreferences</string>
+    <string name="access_token_key">access_token</string>
+
+    <string name="message_is_loading">Memuat data…</string>
+    <string name="message_data_loading_failed">Data gagal dimuat.</string>
+
+    <string name="button_text_login">Login menggunakan Blizzard OAuth</string>
+    <string name="toast_login_failed">Login gagal dengan kode status: </string>
+
+    <string name="label_profile">Profil</string>
+    <string name="description_profile">Menunjukkan semua karakter anda di World of Warcraft.</string>
+    <string name="label_auction_house">Rumah Lelang</string>
+    <string name="description_auction_house">Menunjukkan daftar barang yang dilelang di Rumah Lelang.</string>
+    <string name="label_quest">Misi</string>
+    <string name="description_quest">Menunjukkan semua misi yang tersedia di World of Warcraft.</string>
+
+    <string name="header_character_list">Daftar Karakter</string>
+    <string name="label_character_list_character_name">
+        %1$s, %2$s %3$s %4$s %5$s"
+    </string>
+
+    <string name="description_character_avatar">Avatar dari karakter anda.</string>
+    <string name="fallback_item_slot_empty">Slot kosong</string>
+    <string name="description_item_head">Gambar dari item yang digunakan di slot kepala.</string>
+    <string name="description_item_neck">Gambar dari item yang digunakan di slot leher.</string>
+    <string name="description_item_shoulder">Gambar dari item yang digunakan di slot bahu.</string>
+    <string name="description_item_back">Gambar dari item yang digunakan di slot punggung.</string>
+    <string name="description_item_chest">Gambar dari item yang digunakan di slot dada.</string>
+    <string name="description_item_shirt">Gambar dari item yang digunakan di slot baju.</string>
+    <string name="description_item_tabard">Gambar dari item yang digunakan di slot tabard.</string>
+    <string name="description_item_wrist">Gambar dari item yang digunakan di slot pergelangan tangan.</string>
+    <string name="description_item_hands">Gambar dari item yang digunakan di slot tangan.</string>
+    <string name="description_item_waist">Gambar dari item yang digunakan di slot pinggang.</string>
+    <string name="description_item_legs">Gambar dari item yang digunakan di slot kaki.</string>
+    <string name="description_item_feet">Gambar dari item yang digunakan di slot telapak kaki.</string>
+    <string name="description_item_finger_1">Gambar dari item yang digunakan di slot jari pertama.</string>
+    <string name="description_item_finger_2">Gambar dari item yang digunakan di slot jari kedua.</string>
+    <string name="description_item_trinket_1">Gambar dari item yang digunakan di slot perhiasan pertama.</string>
+    <string name="description_item_trinket_2">Gambar dari item yang digunakan di slot perhiasan kedua.</string>
+    <string name="description_item_main_hand">Gambar dari item yang digunakan di slot senjata utama.</string>
+    <string name="description_item_off_hand">Gambar dari item yang digunakan di slot senjata sekunder.</string>
+    <string name="title_item_list">Item</string>
+    <string name="title_item_detail">Detail Item</string>
+</resources>

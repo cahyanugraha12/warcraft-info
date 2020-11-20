@@ -8,10 +8,10 @@
     android:background="@color/neutral_black"
     tools:context=".landing.ui.LandingActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_layout_button_profile"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:clickable="true"
         android:focusable="true"
@@ -27,6 +27,9 @@
             android:background="@color/neutral_white"
             android:contentDescription="@string/description_profile"
             android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/profile_icon" />
 
         <TextView
@@ -38,13 +41,16 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_button_profile" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_layout_button_auction_house"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
@@ -60,26 +66,30 @@
             android:background="@color/neutral_white"
             android:contentDescription="@string/description_auction_house"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/auction_house_icon"
-            tools:layout_editor_absoluteX="140dp"
-            tools:layout_editor_absoluteY="260dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/auction_house_icon" />
 
         <TextView
             android:id="@+id/label_auction_house"
             style="@style/text_primary"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_auction_house"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="24sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_button_auction_house" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear_layout_button_quest"
-        android:layout_width="150dp"
-        android:layout_height="180dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
         android:clickable="true"
         android:focusable="true"
@@ -92,9 +102,12 @@
             android:id="@+id/image_button_quest"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:background="@color/neutral_white"
+            android:background="@color/neutral_black"
             android:contentDescription="@string/description_quest"
             android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/quest_icon" />
 
         <TextView
@@ -106,8 +119,11 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_button_quest" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,13 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.ui.LoginActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterSummary
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.CharacterListFragmentBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel.CharacterViewModel
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CharacterListFragment : Fragment() {
@@ -49,10 +49,13 @@ class CharacterListFragment : Fragment() {
                 binding.containerLoadingCharacterList.visibility = View.VISIBLE
                 binding.containerDataCharacterList.visibility = View.GONE
             } else {
-                // TODO Further distinguish between actual loading error and access token null/expired
                 if (viewModel.characterListLoadingStatus.isSuccess) {
                     binding.containerLoadingCharacterList.visibility = View.GONE
                     binding.containerDataCharacterList.visibility = View.VISIBLE
+                } else if (viewModel.characterListLoadingStatus.errorCode == WarcraftInfoConstant.ACCESS_TOKEN_INVALID){
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+                    startActivity(intent)
                 } else {
                     binding.containerLoadingCharacterList.visibility = View.VISIBLE
                     binding.containerDataCharacterList.visibility = View.GONE

@@ -7,4 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".character.ui.CharacterActivity" >
+
+    <LinearLayout
+        android:id="@+id/fragment_outer_container_character_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 </LinearLayout>

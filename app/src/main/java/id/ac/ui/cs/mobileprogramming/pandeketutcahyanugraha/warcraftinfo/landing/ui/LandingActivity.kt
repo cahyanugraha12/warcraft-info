@@ -20,6 +20,11 @@ class LandingActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.imageButtonProfile.setOnClickListener {
+            val intent = Intent(this, CharacterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            startActivity(intent)
+        }
         binding.linearLayoutButtonProfile.setOnClickListener {
             val intent = Intent(this, CharacterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT

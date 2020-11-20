@@ -1,5 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.ui.LoginActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel.CharacterViewModel
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.CharacterDetailFragmentBinding
@@ -42,10 +44,13 @@ class CharacterDetailFragment : Fragment() {
                 binding.containerLoadingCharacterDetail.visibility = View.VISIBLE
                 binding.containerDataCharacterDetail.visibility = View.GONE
             } else {
-                // TODO Further distinguish between actual loading error and access token null/expired
                 if (viewModel.characterDetailLoadingStatus.isSuccess) {
                     binding.containerLoadingCharacterDetail.visibility = View.GONE
                     binding.containerDataCharacterDetail.visibility = View.VISIBLE
+                } else if (viewModel.characterDetailLoadingStatus.errorCode == WarcraftInfoConstant.ACCESS_TOKEN_INVALID){
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+                    startActivity(intent)
                 } else {
                     binding.containerLoadingCharacterDetail.visibility = View.VISIBLE
                     binding.containerDataCharacterDetail.visibility = View.GONE

@@ -1,54 +1,23 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.ui
 
-import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
-import android.content.ServiceConnection
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.IBinder
 import android.widget.Toast
+import dagger.hilt.android.AndroidEntryPoint
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.repository.AuthRepository
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.LoginActivityBinding
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.service.AuthService
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: LoginActivityBinding
-    private lateinit var authService: AuthService
-    private var authServiceBound: Boolean = false
-
-    private val connection = object : ServiceConnection {
-        override fun onServiceConnected(className: ComponentName, service: IBinder) {
-            val binder = service as AuthService.LoginServiceBinder
-            authService = binder.getService()
-            authServiceBound = true
-
-            val action: String? = intent?.action
-            val data: Uri? = intent?.data
-
-            if (action == Intent.ACTION_VIEW && authServiceBound) {
-                val accessToken = data?.getQueryParameter("access_token")
-                val errorStatusCode = data?.getQueryParameter("error_status_code")
-                if (accessToken != null) {
-                    authService.saveAccessToken(accessToken)
-                    finish()
-                } else {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        getString(R.string.toast_login_failed).plus(errorStatusCode),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-        }
-
-        override fun onServiceDisconnected(arg0: ComponentName) {
-            authServiceBound = false
-        }
-    }
+    @Inject
+    lateinit var authRepository: AuthRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,18 +37,23 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, webpage)
             startActivity(intent)
         }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        Intent(this, AuthService::class.java).also { intent ->
-            bindService(intent, connection, Context.BIND_AUTO_CREATE)
+        val action: String? = intent?.action
+        val data: Uri? = intent?.data
+
+        if (action == Intent.ACTION_VIEW) {
+            val accessToken = data?.getQueryParameter("access_token")
+            val errorStatusCode = data?.getQueryParameter("error_status_code")
+            if (accessToken != null) {
+                authRepository.saveAccessToken(accessToken)
+                finish()
+            } else {
+                Toast.makeText(
+                    this@LoginActivity,
+                    getString(R.string.toast_login_failed).plus(errorStatusCode),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
-    }
-
-    override fun onStop() {
-        super.onStop()
-        unbindService(connection)
-        authServiceBound = false
     }
 }

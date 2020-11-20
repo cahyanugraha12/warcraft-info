@@ -52,7 +52,9 @@ class CharacterViewModel @ViewModelInject constructor(
             if (characterSummaryListAPIResponse is APIResponse.Success) {
                 characterListLoadingStatus.isSuccess = true
                 if (characterSummaryListAPIResponse.data != null && characterSummaryListAPIResponse.data.isNotEmpty()) {
-                    characterSummaryList.value = characterSummaryListAPIResponse.data
+                    characterSummaryList.value = characterSummaryListAPIResponse.data.sortedBy {
+                        it.name
+                    }
                     currentCharacterSummarySelectedPosition.value = 1
                 }
             } else {

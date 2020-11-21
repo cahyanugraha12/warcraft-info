@@ -8,6 +8,4 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.mo
 @Database(entities = arrayOf(Item::class), version = 1)
 abstract class ItemDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
-    // TODO Implement, remember to add to entities above too
-//    abstract fun itemClassDao(): ItemClassDao
 }

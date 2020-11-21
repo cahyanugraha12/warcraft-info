@@ -2,7 +2,7 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 
 import com.google.gson.annotations.SerializedName
 
-data class AccountProfileSummary(
+data class AccountProfileSummaryAPIDao(
     val id: Int,
-    @SerializedName("wow_accounts") val wowAccounts: List<WoWAccount>
+    @SerializedName("wow_accounts") val wowAccounts: List<WoWAccountAPIDao>
 )

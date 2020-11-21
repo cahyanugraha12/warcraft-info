@@ -51,10 +51,32 @@
             android:layout_width="wrap_content"
             android:layout_height="3dp"
             android:background="@color/secondary_color"
-            app:layout_constraintBottom_toTopOf="@+id/scroll_view_character_items"
+            app:layout_constraintBottom_toTopOf="@+id/button_save_character_media"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view_character_main_media" />
+
+        <Button
+            android:id="@+id/button_save_character_media"
+            style="@style/text_tertiary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/main_color"
+            android:text="@string/button_text_save_character_media"
+            app:layout_constraintBottom_toTopOf="@+id/border_bottom_button_save_character_media"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_image_view_character_main_media" />
+
+        <View
+            android:id="@+id/border_bottom_button_save_character_media"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/scroll_view_character_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_save_character_media" />
 
         <ScrollView
             android:id="@+id/scroll_view_character_items"
@@ -63,7 +85,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_character_main_media">
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_button_save_character_media">
 
             <LinearLayout
                 android:id="@+id/container_character_items"

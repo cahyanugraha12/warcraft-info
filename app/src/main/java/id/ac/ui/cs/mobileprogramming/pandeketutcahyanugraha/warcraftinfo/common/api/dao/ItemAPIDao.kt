@@ -2,7 +2,7 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 
 import com.google.gson.annotations.SerializedName
 
-data class Item (
+data class ItemAPIDao (
     val id: Int,
     val name: String,
     val quality: GenericTypeName,

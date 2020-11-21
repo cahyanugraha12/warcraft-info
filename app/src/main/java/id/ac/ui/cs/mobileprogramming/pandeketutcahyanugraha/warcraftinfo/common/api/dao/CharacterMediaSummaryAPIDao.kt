@@ -2,7 +2,7 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 
 import com.google.gson.annotations.SerializedName
 
-data class CharacterMediaSummary(
+data class CharacterMediaSummaryAPIDao(
     // US-Oceania
     val assets: List<GenericKeyValue>?,
     // US-North America

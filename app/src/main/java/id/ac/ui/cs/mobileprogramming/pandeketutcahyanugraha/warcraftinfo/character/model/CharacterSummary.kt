@@ -1,12 +1,14 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model
 
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.AccountProfileSummary
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.Character
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.CharacterMediaSummary
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.CharacterAPIDao
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.CharacterMediaSummaryAPIDao
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 
+@Entity(tableName = "character_summary")
 data class CharacterSummary(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val avatarMediaLink: String,
     val mainMediaLink: String,
     val name: String,
@@ -19,7 +21,7 @@ data class CharacterSummary(
     val level: Int
 ) {
     companion object {
-        fun fromCharacterAndMedia(character: Character, media: CharacterMediaSummary): CharacterSummary {
+        fun fromCharacterAndMedia(character: CharacterAPIDao, media: CharacterMediaSummaryAPIDao): CharacterSummary {
             var avatarMediaLink: String = ""
             var mainMediaLink: String = ""
 

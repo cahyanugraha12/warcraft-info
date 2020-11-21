@@ -10,7 +10,6 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.charact
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.APIResponse
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.utils.DataLoadingStatus
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.model.Item
 import kotlinx.coroutines.launch
 
 class CharacterViewModel @ViewModelInject constructor(
@@ -46,6 +45,10 @@ class CharacterViewModel @ViewModelInject constructor(
     )
 
     init {
+        getCharacterSummary()
+    }
+
+    fun getCharacterSummary() {
         viewModelScope.launch {
             characterListLoadingStatus.isLoading.value = true
             val characterSummaryListAPIResponse = characterRepository.getCharacterSummary()

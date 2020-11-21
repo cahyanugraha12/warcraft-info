@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_loading_auction_house_listing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/message_loading_auction_house_listing"
+            style="@style/text_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message_is_loading"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_data_auction_house_listing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black"
+        tools:context=".auctionhouse.ui.AuctionHouseActivity">
+
+        <TextView
+            android:id="@+id/header_auction_house_listing"
+            style="@style/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/header_auction_house_listing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/border_bottom_header_auction_house_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view_auction_house_listing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_auction_house_listing" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_auction_house_listing"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/border_bottom_recycler_view_auction_house_listing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_header_auction_house_listing"
+            tools:listitem="@layout/auction_house_listing_item" />
+
+        <View
+            android:id="@+id/border_bottom_recycler_view_auction_house_listing"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_auction_house_listing" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

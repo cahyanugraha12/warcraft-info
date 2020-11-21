@@ -3,36 +3,45 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.charac
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.repository.AuthRepository
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterItem
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterSummary
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.model.CharacterSummaryDao
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.APIResponse
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.BlizzardAPI
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.AccountProfileSummary
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.Character
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.TaranzhiAPI
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.repository.ItemRepository
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.util.*
 import javax.inject.Inject
 
 class CharacterRepository @Inject constructor(
     private val blizzardAPI: BlizzardAPI,
+    private val taranzhiAPI: TaranzhiAPI,
+    private val characterSummaryDao: CharacterSummaryDao,
+    private val authRepository: AuthRepository,
     private val itemRepository: ItemRepository,
     @ApplicationContext private val appContext: Context
 ) {
     suspend fun getCharacterSummary(): APIResponse<List<CharacterSummary>> {
-        val sharedPreferences = appContext.getSharedPreferences(
-            appContext.getString(R.string.common_preferences),
-            Context.MODE_PRIVATE
-        )
-        val accessToken = sharedPreferences.getString(appContext.getString(R.string.access_token_key), null)
-            ?: return APIResponse.Failed(null, WarcraftInfoConstant.ACCESS_TOKEN_INVALID)
+        val useDummyData = authRepository.getUseDummyDataFlag()
+        var accessToken = ""
+        if (!useDummyData) {
+            accessToken = authRepository.getAccessToken()
+                ?: return APIResponse.Failed(null, WarcraftInfoConstant.ACCESS_TOKEN_INVALID)
+        }
 
         val profileSummaryResponseDeferred = GlobalScope.async(Dispatchers.IO) {
-            blizzardAPI.getProfileSummary(WarcraftInfoConstant.NAMESPACE_PROFILE, WarcraftInfoConstant.LOCALE, accessToken).execute()
+            if (!useDummyData) {
+                blizzardAPI.getProfileSummary(
+                    WarcraftInfoConstant.NAMESPACE_PROFILE,
+                    WarcraftInfoConstant.LOCALE,
+                    accessToken
+                ).execute()
+            } else {
+                taranzhiAPI.getCharacterSummary().execute()
+            }
         }
         val profileSummaryResponse = profileSummaryResponseDeferred.await()
 
@@ -44,23 +53,39 @@ class CharacterRepository @Inject constructor(
         profileSummaryResponse.body()!!.wowAccounts.map { account ->
             account.characters.map { character ->
                 GlobalScope.async(Dispatchers.IO) {
-                    val characterMediaSummaryResponseDeferred = GlobalScope.async(Dispatchers.IO) {
-                        blizzardAPI.getCharacterMedia(
-                            character.realm.slug,
-                            character.name.toLowerCase(Locale.ROOT),
-                            WarcraftInfoConstant.NAMESPACE_PROFILE,
-                            WarcraftInfoConstant.LOCALE,
-                            accessToken
-                        ).execute()
-                    }
-                    val characterMediaSummaryResponse = characterMediaSummaryResponseDeferred.await()
-                    val characterMediaSummaryResponseBody = characterMediaSummaryResponse.body()
+                    var characterSummary = characterSummaryDao.getById(character.id)
 
-                    if (characterMediaSummaryResponse.isSuccessful && characterMediaSummaryResponseBody != null) {
-                        characterSummaryList.add(CharacterSummary.fromCharacterAndMedia(
-                            character,
-                            characterMediaSummaryResponseBody
-                        ))
+                    if (characterSummary == null) {
+                        val characterMediaSummaryResponseDeferred = GlobalScope.async(Dispatchers.IO) {
+                            if (!useDummyData) {
+                                blizzardAPI.getCharacterMedia(
+                                    character.realm.slug,
+                                    character.name.toLowerCase(Locale.ROOT),
+                                    WarcraftInfoConstant.NAMESPACE_PROFILE,
+                                    WarcraftInfoConstant.LOCALE,
+                                    accessToken
+                                ).execute()
+                            } else {
+                                taranzhiAPI.getCharacterMedia(
+                                    character.realm.slug,
+                                    character.name.toLowerCase(Locale.ROOT)
+                                ).execute()
+                            }
+                        }
+                        val characterMediaSummaryResponse = characterMediaSummaryResponseDeferred.await()
+                        val characterMediaSummaryResponseBody = characterMediaSummaryResponse.body()
+
+                        if (characterMediaSummaryResponse.isSuccessful && characterMediaSummaryResponseBody != null) {
+                            characterSummary = CharacterSummary.fromCharacterAndMedia(
+                                character,
+                                characterMediaSummaryResponseBody
+                            )
+                            characterSummaryDao.insertAll(characterSummary)
+                        }
+                    }
+
+                    if (characterSummary != null) {
+                        characterSummaryList.add(characterSummary)
                     }
                 }
             }.awaitAll()
@@ -70,21 +95,28 @@ class CharacterRepository @Inject constructor(
 
     suspend fun getCharacterItemList(characterRealmSlug: String, characterName: String)
             : APIResponse<List<CharacterItem>> {
-        val sharedPreferences = appContext.getSharedPreferences(
-            appContext.getString(R.string.common_preferences),
-            Context.MODE_PRIVATE
-        )
-        val accessToken = sharedPreferences.getString(appContext.getString(R.string.access_token_key), null)
-            ?: return APIResponse.Failed(null, WarcraftInfoConstant.ACCESS_TOKEN_INVALID)
+        val useDummyData = authRepository.getUseDummyDataFlag()
+        var accessToken = ""
+        if (!useDummyData) {
+            accessToken = authRepository.getAccessToken()
+                ?: return APIResponse.Failed(null, WarcraftInfoConstant.ACCESS_TOKEN_INVALID)
+        }
 
         val characterEquipmentSummaryResponseDeferred = GlobalScope.async(Dispatchers.IO) {
-            blizzardAPI.getCharacterEquipment(
-                characterRealmSlug,
-                characterName.toLowerCase(Locale.ROOT),
-                WarcraftInfoConstant.NAMESPACE_PROFILE,
-                WarcraftInfoConstant.LOCALE,
-                accessToken
-            ).execute()
+            if (!useDummyData) {
+                blizzardAPI.getCharacterEquipment(
+                    characterRealmSlug,
+                    characterName.toLowerCase(Locale.ROOT),
+                    WarcraftInfoConstant.NAMESPACE_PROFILE,
+                    WarcraftInfoConstant.LOCALE,
+                    accessToken
+                ).execute()
+            } else {
+                taranzhiAPI.getCharacterEquipment(
+                    characterRealmSlug,
+                    characterName.toLowerCase(Locale.ROOT)
+                ).execute()
+            }
         }
         val characterEquipmentSummaryResponse = characterEquipmentSummaryResponseDeferred.await()
         val characterEquipmentSummaryResponseBody = characterEquipmentSummaryResponse.body()

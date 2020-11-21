@@ -16,6 +16,7 @@
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linear_layout_button_auction_house"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -51,10 +52,11 @@
         android:id="@+id/linear_layout_button_auction_house"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linear_layout_button_quest"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear_layout_button_profile">
@@ -84,46 +86,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_button_auction_house" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_layout_button_quest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/image_button_quest"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@color/neutral_black"
-            android:contentDescription="@string/description_quest"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/quest_icon" />
-
-        <TextView
-            android:id="@+id/label_quest"
-            style="@style/text_primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_quest"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_button_quest" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

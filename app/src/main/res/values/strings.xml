@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">Warcraft Info</string>
 
-    <string name="common_preferences">id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.commonpreferences</string>
-    <string name="access_token_key">access_token</string>
-
     <string name="message_is_loading">Loading data...</string>
     <string name="message_data_loading_failed">Data failed to load.</string>
+    <string name="message_auction_house_listing_data_invalid">
+        Auction House Listing Data is currently being updated. Click the notification that pops out when data updating is done!
+    </string>
 
     <string name="button_text_login">Login using Blizzard OAuth</string>
+    <string name="button_text_dummy_data">Use Cahya\'s Dummy Data</string>
+    <string name="text_view_login_activity_info">
+        Token expired or unavailable. Please login/relogin using Blizzard OAuth. You can also temporarily use dummy data.
+    </string>
     <string name="toast_login_failed">Login failed with status code: </string>
 
     <string name="label_profile">Profile</string>
@@ -23,6 +27,12 @@
     </string>
 
     <string name="description_character_avatar">Avatar of your character.</string>
+    <string name="button_text_save_character_media">Save character image to gallery</string>
+    <string name="text_failed_save_character_image_to_gallery">Failed to save character image to Gallery</string>
+    <string name="text_success_save_character_image_to_gallery">Character image saved to Gallery!</string>
+    <string name="template_character_image_name">warcraft_character_%1$s_%2$d</string>
+    <string name="template_character_image_description">Image of %1$s</string>
+
     <string name="fallback_item_slot_empty">Empty slot</string>
     <string name="description_item_head">Image of equipped item on head slot.</string>
     <string name="description_item_neck">Image of equipped item on neck slot.</string>
@@ -44,4 +54,38 @@
     <string name="description_item_off_hand">Image of equipped item on off hand slot.</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+
+    <string name="header_auction_house_listing">Auction House Listing</string>
+    <string name="fallback_item_name_null">Item name not found</string>
+    <string name="fallback_item_quality_null">Item quality is unknown</string>
+    <string name="fallback_bid_price_null">No bid yet</string>
+    <string name="template_bid_price">Bid Price: %1$d gold, %2$d silver, %3$d copper</string>
+    <string name="fallback_buyout_price_null">Buyout price is not set</string>
+    <string name="template_buyout_price">Buyout Price: %1$d gold, %2$d silver, %3$d copper</string>
+    <string name="fallback_unit_price_null">Unit price is not set</string>
+    <string name="template_unit_price">Unit Price: %1$d gold, %2$d silver, %3$d copper</string>
+    <string name="fallback_time_left_null">Time left before delisting is unknown</string>
+    <string name="text_auction_time_left_short">Less than 30 minutes left before delisting</string>
+    <string name="text_auction_time_left_medium">30 minutes to 2 hours left before delisting</string>
+    <string name="text_auction_time_left_long">2 hours to 12 hours left before delisting</string>
+    <string name="text_auction_time_left_very_long">12 hours to 48 hours left before delisting</string>
+
+    <string name="name_notification_channel_auction_house_job">
+        Notification Channel for Auction House Job
+    </string>
+    <string name="description_notification_channel_auction_house_job">
+        Notification Channel for Auction House Job to inform about Auction House data fetching progress.
+    </string>
+    <string name="content_title_notification_auction_house_job">
+        Auction House Data Fetching
+    </string>
+    <string name="content_text_in_progress_notification_auction_house_job">
+        Data fetching in progress.
+    </string>
+    <string name="content_text_completed_notification_auction_house_job">
+        Data fetched successfully. Click to open Auction House Listing.
+    </string>
+    <string name="content_text_failed_notification_auction_house_job">
+        Failed to fetch data.
+    </string>
 </resources>

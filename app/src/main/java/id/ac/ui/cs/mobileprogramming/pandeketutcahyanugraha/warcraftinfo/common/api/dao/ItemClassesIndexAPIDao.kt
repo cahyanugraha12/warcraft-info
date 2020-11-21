@@ -2,6 +2,6 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemClassesIndex(
+data class ItemClassesIndexAPIDao(
     @SerializedName("item_classes") val itemClassList: List<GenericIDName>
 )

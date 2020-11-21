@@ -11,7 +11,7 @@ interface BlizzardAPI {
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<AccountProfileSummary>
+    ): Call<AccountProfileSummaryAPIDao>
 
     @GET("/profile/wow/character/{realmSlug}/{characterName}/equipment")
     fun getCharacterEquipment(
@@ -20,7 +20,7 @@ interface BlizzardAPI {
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<CharacterEquipmentSummary>
+    ): Call<CharacterEquipmentSummaryAPIDao>
 
     @GET("/profile/wow/character/{realmSlug}/{characterName}/character-media")
     fun getCharacterMedia(
@@ -29,14 +29,22 @@ interface BlizzardAPI {
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<CharacterMediaSummary>
+    ): Call<CharacterMediaSummaryAPIDao>
+
+    // TODO Hardcoded to Nagrand for now
+    @GET("/data/wow/connected-realm/3721/auctions")
+    fun getAuctionHouseData(
+        @Query("namespace") namespace: String,
+        @Query("locale") locale: String,
+        @Query("access_token") accessToken: String
+    ): Call<AuctionHouseAPIDao>
 
     @GET("/data/wow/item-class/index")
     fun getItemClassesIndex(
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<ItemClassesIndex>
+    ): Call<ItemClassesIndexAPIDao>
 
     @GET("data/wow/item/{itemId}")
     fun getItemById(
@@ -44,7 +52,7 @@ interface BlizzardAPI {
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<Item>
+    ): Call<ItemAPIDao>
 
     @GET("data/wow/media/item/{itemId}")
     fun getItemMediaById(
@@ -52,5 +60,5 @@ interface BlizzardAPI {
         @Query("namespace") namespace: String,
         @Query("locale") locale: String,
         @Query("access_token") accessToken: String
-    ): Call<ItemMedia>
+    ): Call<ItemMediaAPIDao>
 }

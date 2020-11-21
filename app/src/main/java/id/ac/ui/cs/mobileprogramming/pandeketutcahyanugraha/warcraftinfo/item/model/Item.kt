@@ -2,9 +2,9 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.m
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.ItemMedia
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.ItemMediaAPIDao
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.Item as ItemDao
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.ItemAPIDao as ItemDao
 
 @Entity
 data class Item (
@@ -20,7 +20,7 @@ data class Item (
     val mediaLink: String
 ) {
     companion object {
-        fun fromItemAndItemMedia(item: ItemDao, itemMedia: ItemMedia): Item {
+        fun fromItemAndItemMedia(item: ItemDao, itemMedia: ItemMediaAPIDao): Item {
             var mediaLink = ""
             for (media in itemMedia.assets) {
                 if (media.key == WarcraftInfoConstant.MEDIA_ICON_KEY) {

@@ -1,22 +1,29 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.fragment
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Picasso.LoadedFrom
+import com.squareup.picasso.Target
 import dagger.hilt.android.AndroidEntryPoint
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.R
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.ui.LoginActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.viewmodel.CharacterViewModel
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.CharacterDetailFragmentBinding
+import java.lang.Exception
 
 @AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
@@ -68,6 +75,46 @@ class CharacterDetailFragment : Fragment() {
                     .get()
                     .load(currentSelectedCharacterSummary?.mainMediaLink)
                     .into(binding.imageViewCharacterMainMedia)
+                binding.buttonSaveCharacterMedia.setOnClickListener {
+                    val target: Target = object : Target {
+                        override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                            return
+                        }
+
+                        override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                            Toast.makeText(
+                                activity,
+                                getString(R.string.text_failed_save_character_image_to_gallery),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+
+                        override fun onBitmapLoaded(bitmap: Bitmap?, from: LoadedFrom?) {
+                            MediaStore.Images.Media.insertImage(
+                                activity?.contentResolver,
+                                bitmap,
+                                getString(
+                                    R.string.template_character_image_name,
+                                    currentSelectedCharacterSummary!!.name,
+                                    System.currentTimeMillis()
+                                ),
+                                getString(
+                                    R.string.template_character_image_description,
+                                    currentSelectedCharacterSummary.name
+                                )
+                            )
+                            Toast.makeText(
+                                activity,
+                                getString(R.string.text_success_save_character_image_to_gallery),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                    Picasso
+                        .get()
+                        .load(currentSelectedCharacterSummary?.mainMediaLink)
+                        .into(target)
+                }
             }
         })
 
@@ -95,13 +142,15 @@ class CharacterDetailFragment : Fragment() {
             viewModel.characterItemMap[slotAndViewTriple.first]?.observe(viewLifecycleOwner, Observer { item ->
                 val imageView: ImageView? = view?.findViewById(slotAndViewTriple.second)
                 val textView: TextView? = view?.findViewById(slotAndViewTriple.third)
-                if (item != null && imageView != null && textView != null) {
+                if (item != null && imageView != null) {
                     Picasso
                         .get()
                         .load(item.mediaLink)
                         .resize(60, 60)
                         .into(imageView)
-                    textView.text = item.name
+                    if (textView != null) {
+                        textView.text = item.name
+                    }
                 }
             })
         }

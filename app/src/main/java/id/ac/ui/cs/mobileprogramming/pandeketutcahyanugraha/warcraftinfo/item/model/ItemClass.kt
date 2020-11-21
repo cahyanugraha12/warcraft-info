@@ -1,7 +1,7 @@
 package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.model
 
 import androidx.room.Entity
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.ItemClassesIndex
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.api.dao.ItemClassesIndexAPIDao
 
 @Entity
 data class ItemClass (
@@ -9,7 +9,7 @@ data class ItemClass (
     val name: String
 ) {
     companion object {
-        fun fromItemClassesIndex(itemClassesIndex: ItemClassesIndex): List<ItemClass> {
+        fun fromItemClassesIndex(itemClassesIndex: ItemClassesIndexAPIDao): List<ItemClass> {
             val result: MutableList<ItemClass> = mutableListOf()
             for (itemClass in itemClassesIndex.itemClassList) {
                 result.add(ItemClass(

@@ -3,15 +3,19 @@
     package="id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".WarcraftInfoApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/auction_house_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/auction_house_icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme">
+        <activity android:name=".auctionhouse.ui.AuctionHouseActivity" />
         <activity android:name=".character.ui.CharacterActivity" />
         <activity android:name=".landing.ui.LandingActivity">
             <intent-filter>
@@ -35,6 +39,17 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".auctionhouse.broadcast.AuctionHouseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".auctionhouse.service.AuctionHouseJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>

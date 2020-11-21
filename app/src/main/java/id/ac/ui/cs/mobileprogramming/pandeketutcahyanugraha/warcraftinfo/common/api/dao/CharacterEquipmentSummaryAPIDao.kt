@@ -2,6 +2,6 @@ package id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common
 
 import com.google.gson.annotations.SerializedName
 
-data class CharacterEquipmentSummary(
-    @SerializedName("equipped_items") val equippedItems: List<CharacterEquipmentDetail>
+data class CharacterEquipmentSummaryAPIDao(
+    @SerializedName("equipped_items") val equippedItems: List<CharacterEquipmentDetailAPIDao>
 )

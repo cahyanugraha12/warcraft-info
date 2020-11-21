@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">Warcraft Info</string>
 
-    <string name="common_preferences">id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.commonpreferences</string>
-    <string name="access_token_key">access_token</string>
-
     <string name="message_is_loading">Memuat data…</string>
     <string name="message_data_loading_failed">Data gagal dimuat.</string>
+    <string name="message_auction_house_listing_data_invalid">
+        Data Daftar Item Rumah Lelang sedang diperbarui. Klik notifikasi yang muncul ketika pembaharuan data selesai!
+    </string>
 
     <string name="button_text_login">Login menggunakan Blizzard OAuth</string>
+    <string name="button_text_dummy_data">Gunakan Dummy Data oleh Cahya</string>
+    <string name="text_view_login_activity_info">
+        Token hangus atau tidak tersedia. Mohon login atau login ulang menggunakan Blizzard OAuth. Anda juga bisa menggunakan data dummy untuk sementara.
+    </string>
     <string name="toast_login_failed">Login gagal dengan kode status: </string>
 
     <string name="label_profile">Profil</string>
@@ -23,6 +27,12 @@
     </string>
 
     <string name="description_character_avatar">Avatar dari karakter anda.</string>
+    <string name="button_text_save_character_media">Simpan gambar karakter ke Gallery</string>
+    <string name="text_failed_save_character_image_to_gallery">Gagal menyimpan gambar karakter ke Gallery</string>
+    <string name="text_success_save_character_image_to_gallery">Gambar karakter berhasil disimpan ke Gallery!</string>
+    <string name="template_character_image_name">karakter_warcraft_%1$s_%2$d</string>
+    <string name="template_character_image_description">Gambar dari %1$s</string>
+
     <string name="fallback_item_slot_empty">Slot kosong</string>
     <string name="description_item_head">Gambar dari item yang digunakan di slot kepala.</string>
     <string name="description_item_neck">Gambar dari item yang digunakan di slot leher.</string>
@@ -44,4 +54,38 @@
     <string name="description_item_off_hand">Gambar dari item yang digunakan di slot senjata sekunder.</string>
     <string name="title_item_list">Item</string>
     <string name="title_item_detail">Detail Item</string>
+
+    <string name="header_auction_house_listing">Daftar Item Rumah Lelang</string>
+    <string name="fallback_item_name_null">Nama item tidak ditemukan</string>
+    <string name="fallback_item_quality_null">Kualitas item tidak diketahui</string>
+    <string name="fallback_bid_price_null">Harga Bid tidak ditentukan</string>
+    <string name="template_bid_price">Harga Bid: %1$d emas, %2$d perak, %3$d tembaga</string>
+    <string name="fallback_buyout_price_null">Harga buyout tidak ditentukan</string>
+    <string name="template_buyout_price">Harga Buyout: %1$d emas, %2$d perak, %3$d tembaga</string>
+    <string name="fallback_unit_price_null">Harga per Unit tidak ditentukan</string>
+    <string name="template_unit_price">Harga per Unit: %1$d emas, %2$d perak, %3$d tembaga</string>
+    <string name="fallback_time_left_null">Waktu tersisa sebelum item dihapus dari daftar tidak diketahui</string>
+    <string name="text_auction_time_left_short">Kurang dari 30 menit tersisa sebelum item dihapus dari daftar</string>
+    <string name="text_auction_time_left_medium">Kira-kira 30 menit sampai 2 jam tersisa sebelum item dihapus dari daftar</string>
+    <string name="text_auction_time_left_long">Kira-kira 2 jam sampai 12 jam tersisa sebelum item dihapus dari daftar</string>
+    <string name="text_auction_time_left_very_long">Kira-kira 12 jam sampai 48 jam tersisa sebelum item dihapus dari daftar</string>
+
+    <string name="name_notification_channel_auction_house_job">
+        Kanal Notifikasi untuk Pekerjaan Rumah Lelang
+    </string>
+    <string name="description_notification_channel_auction_house_job">
+        Kanal Notifikasi untuk Pekerjaan Rumah Lelang guna menginformasikan perkembangan pengambilan data Rumah Lelang.
+    </string>
+    <string name="content_title_notification_auction_house_job">
+        Pengambilan Data Rumah Lelang
+    </string>
+    <string name="content_text_in_progress_notification_auction_house_job">
+        Pengambilan data dalam proses.
+    </string>
+    <string name="content_text_completed_notification_auction_house_job">
+        Pengambilan data sukses dilakukan. Klik untuk membuka Daftar Item Rumah Lelang.
+    </string>
+    <string name="content_text_failed_notification_auction_house_job">
+        Pengambilan data gagal dilakukan.
+    </string>
 </resources>

@@ -6,6 +6,7 @@
     <string name="message_auction_house_listing_data_invalid">
         Auction House Listing Data is currently being updated. Click the notification that pops out when data updating is done!
     </string>
+    <string name="message_network_is_not_connected">This feature require an active network connection.</string>
 
     <string name="button_text_login">Login using Blizzard OAuth</string>
     <string name="button_text_dummy_data">Use Cahya\'s Dummy Data</string>
@@ -18,8 +19,8 @@
     <string name="description_profile">Showing all your characters in World of Warcraft.</string>
     <string name="label_auction_house">Auction House</string>
     <string name="description_auction_house">Showing current listing in Auction House.</string>
-    <string name="label_quest">Quest</string>
-    <string name="description_quest">List of all Quest available in World of Warcraft.</string>
+    <string name="label_soundtrack">Soundtrack</string>
+    <string name="description_soundtrack">Listen to World of Warcraft Soundtrack.</string>
 
     <string name="header_character_list">Character List</string>
     <string name="label_character_list_character_name">
@@ -87,5 +88,23 @@
     </string>
     <string name="content_text_failed_notification_auction_house_job">
         Failed to fetch data.
+    </string>
+
+    <string name="header_soundtrack">Soundtrack</string>
+    <string name="fallback_soundtrack_metadata_item_title_null">
+        Title unknown
+    </string>
+    <string name="fallback_soundtrack_metadata_item_artists_null">
+        Artist unknown
+    </string>
+    <string name="fallback_soundtrack_metadata_item_album_null">
+        Single
+    </string>
+    <string name="playback_no_soundtrack_playing">No soundtrack selected</string>
+    <string name="name_notification_channel_soundtrack_service">
+        Notification Channel for Service Soundtrack
+    </string>
+    <string name="description_notification_soundtrack_service">
+        Notification Channel for Service Soundtrack to inform status of currently played soundtrack
     </string>
 </resources>

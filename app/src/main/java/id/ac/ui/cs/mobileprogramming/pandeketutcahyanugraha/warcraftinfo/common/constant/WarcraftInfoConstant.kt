@@ -7,6 +7,8 @@ object WarcraftInfoConstant {
     const val STATIC_TOKEN_KEY = "static_token"
     const val USE_DUMMY_DATA = "use_dummy_data"
     const val AUCTION_HOUSE_DATA_VALIDITY_KEY = "auction_house_data_validity"
+    const val SOUNDTRACK_METADATA_KEY = "soundtrack_metadata"
+    const val SOUNDTRACK_INDEX_KEY = "soundtrack_index"
 
     // API Related Constants
     // Blizzard Client ID is not a secret, therefore placing it here is not a security concern.
@@ -56,4 +58,18 @@ object WarcraftInfoConstant {
     const val AUCTION_HOUSE_JOB_NOTIFICATION_CHANNEL_ID = "120499"
     const val AUCTION_HOUSE_JOB_NOTIFICATION_ID = 120500
     const val AUCTION_HOUSE_JOB_SERVICE_JOB_ID = 120501
+
+    // Soundtrack Related Constants
+    const val BROADCAST_PLAY_NEW_SOUNDTRACK = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.BROADCAST_PLAY_NEW_SOUNDTRACK"
+    const val BROADCAST_PAUSE_SOUNDTRACK = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.BROADCAST_PAUSE_SOUNDTRACK"
+    const val BROADCAST_RESUME_SOUNDTRACK = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.BROADCAST_RESUME_SOUNDTRACK"
+    const val BROADCAST_PREVIOUS_SOUNDTRACK = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.BROADCAST_PREVIOUS_SOUNDTRACK"
+    const val BROADCAST_NEXT_SOUNDTRACK = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.BROADCAST_NEXT_SOUNDTRACK"
+    const val ACTION_PLAY = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_PLAY"
+    const val ACTION_PAUSE = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_PAUSE"
+    const val ACTION_PREVIOUS = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_PREVIOUS"
+    const val ACTION_NEXT = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_NEXT"
+    const val ACTION_STOP = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_STOP"
+    const val SOUNDTRACK_NOTIFICATION_CHANNEL_ID = "28122020"
+    const val SOUNDTRACK_NOTIFICATION_ID = 28122020
 }

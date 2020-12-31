@@ -23,14 +23,9 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auction
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.repository.AuctionHouseRepository
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.service.AuctionHouseJobService
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.ui.viewmodel.AuctionHouseViewModel
-import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auth.ui.LoginActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.common.constant.WarcraftInfoConstant
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.AuctionHouseActivityBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.item.repository.ItemRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container_soundtrack_metadata_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_view_album_cover"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_soundtrack_metadata_item_detail"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_view_album_cover"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_soundtrack_metadata_item_detail_title"
+            style="@style/text_secondary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/fallback_soundtrack_metadata_item_title_null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_soundtrack_metadata_item_detail_artists"
+            style="@style/text_tertiary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/fallback_soundtrack_metadata_item_artists_null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_soundtrack_metadata_item_detail_title" />
+
+        <TextView
+            android:id="@+id/text_view_soundtrack_metadata_item_detail_album"
+            style="@style/text_secondary"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:text="@string/fallback_soundtrack_metadata_item_album_null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_soundtrack_metadata_item_detail_artists" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/border_bottom_soundtrack_metadata_item_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/secondary_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_soundtrack_metadata_item_detail" />
+</androidx.constraintlayout.widget.ConstraintLayout>

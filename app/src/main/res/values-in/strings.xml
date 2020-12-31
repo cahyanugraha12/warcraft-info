@@ -6,6 +6,7 @@
     <string name="message_auction_house_listing_data_invalid">
         Data Daftar Item Rumah Lelang sedang diperbarui. Klik notifikasi yang muncul ketika pembaharuan data selesai!
     </string>
+    <string name="message_network_is_not_connected">Fitur ini membutuhkan koneksi internet yang aktif.</string>
 
     <string name="button_text_login">Login menggunakan Blizzard OAuth</string>
     <string name="button_text_dummy_data">Gunakan Dummy Data oleh Cahya</string>
@@ -18,8 +19,8 @@
     <string name="description_profile">Menunjukkan semua karakter anda di World of Warcraft.</string>
     <string name="label_auction_house">Rumah Lelang</string>
     <string name="description_auction_house">Menunjukkan daftar barang yang dilelang di Rumah Lelang.</string>
-    <string name="label_quest">Misi</string>
-    <string name="description_quest">Menunjukkan semua misi yang tersedia di World of Warcraft.</string>
+    <string name="label_soundtrack">Soundtrack</string>
+    <string name="description_soundtrack">Dengarkan Soundtrack dari World of Warcraft.</string>
 
     <string name="header_character_list">Daftar Karakter</string>
     <string name="label_character_list_character_name">
@@ -87,5 +88,23 @@
     </string>
     <string name="content_text_failed_notification_auction_house_job">
         Pengambilan data gagal dilakukan.
+    </string>
+
+    <string name="header_soundtrack">Soundtrack</string>
+    <string name="fallback_soundtrack_metadata_item_title_null">
+        Judul soundtrack tidak diketahui
+    </string>
+    <string name="fallback_soundtrack_metadata_item_artists_null">
+        Artis tidak diketahui
+    </string>
+    <string name="fallback_soundtrack_metadata_item_album_null">
+        Single
+    </string>
+    <string name="playback_no_soundtrack_playing">Soundtrack belum dipilih</string>
+    <string name="name_notification_channel_soundtrack_service">
+        Kanal Notifikasi untuk Service Soundtrack
+    </string>
+    <string name="description_notification_soundtrack_service">
+        Kanal Notifikasi untuk Service Soundtrack guna menginformasikan status soundtrack yang sedang diputar
     </string>
 </resources>

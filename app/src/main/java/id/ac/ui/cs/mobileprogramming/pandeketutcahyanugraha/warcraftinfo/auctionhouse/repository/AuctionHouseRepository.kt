@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.qualifiers.ApplicationContext
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.model.Auction
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.model.AuctionDao

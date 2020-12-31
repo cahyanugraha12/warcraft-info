@@ -9,6 +9,7 @@ import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.Warcraf
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.ui.AuctionHouseActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.CharacterActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.LandingActivityBinding
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.soundtrack.ui.SoundtrackActivity
 
 @AndroidEntryPoint
 class LandingActivity : AppCompatActivity() {
@@ -38,6 +39,16 @@ class LandingActivity : AppCompatActivity() {
         }
         binding.linearLayoutButtonAuctionHouse.setOnClickListener {
             val intent = Intent(this, AuctionHouseActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            startActivity(intent)
+        }
+        binding.imageButtonSoundtrack.setOnClickListener {
+            val intent = Intent(this, SoundtrackActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            startActivity(intent)
+        }
+        binding.linearLayoutButtonSoundtrack.setOnClickListener {
+            val intent = Intent(this, SoundtrackActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }

@@ -1,91 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_landing_activity"
-    android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:background="@color/neutral_black"
-    tools:context=".landing.ui.LandingActivity">
-
+    android:layout_width="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_layout_button_profile"
-        android:layout_width="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container_landing_activity"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linear_layout_button_auction_house"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/neutral_black"
+        tools:context=".landing.ui.LandingActivity">
 
-        <ImageButton
-            android:id="@+id/image_button_profile"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@color/neutral_white"
-            android:contentDescription="@string/description_profile"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/profile_icon" />
-
-        <TextView
-            android:id="@+id/label_profile"
-            style="@style/text_primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_profile"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_button_profile" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear_layout_button_auction_house"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_button_profile">
-
-        <ImageButton
-            android:id="@+id/image_button_auction_house"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@color/neutral_white"
-            android:contentDescription="@string/description_auction_house"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/auction_house_icon" />
-
-        <TextView
-            android:id="@+id/label_auction_house"
-            style="@style/text_primary"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linear_layout_button_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_auction_house"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:layout_marginTop="64dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linear_layout_button_auction_house"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_button_auction_house" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/image_button_profile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/neutral_white"
+                android:contentDescription="@string/description_profile"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/profile_icon" />
+
+            <TextView
+                android:id="@+id/label_profile"
+                style="@style/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_profile"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_button_profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linear_layout_button_auction_house"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linear_layout_button_soundtrack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_button_profile">
+
+            <ImageButton
+                android:id="@+id/image_button_auction_house"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/neutral_white"
+                android:contentDescription="@string/description_auction_house"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/auction_house_icon" />
+
+            <TextView
+                android:id="@+id/label_auction_house"
+                style="@style/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_auction_house"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_button_auction_house" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linear_layout_button_soundtrack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_button_auction_house">
+
+            <ImageButton
+                android:id="@+id/image_button_soundtrack"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@color/neutral_white"
+                android:contentDescription="@string/description_soundtrack"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/soundtrack_icon" />
+
+            <TextView
+                android:id="@+id/label_soundtrack"
+                style="@style/text_primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_soundtrack"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_button_soundtrack" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

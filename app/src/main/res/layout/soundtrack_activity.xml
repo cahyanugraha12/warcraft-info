@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_soundtrack_activity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".soundtrack.ui.SoundtrackActivity" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_loading_soundtrack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black"
+        tools:visibility="gone">
+
+        <TextView
+            android:id="@+id/message_loading_soundtrack"
+            style="@style/text_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/message_is_loading"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_data_soundtrack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/neutral_black">
+
+        <TextView
+            android:id="@+id/header_soundtrack"
+            style="@style/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/header_soundtrack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/border_bottom_header_soundtrack"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view_soundtrack_metadata"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_soundtrack" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_soundtrack_metadata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/border_bottom_recycler_view_soundtrack_metadata"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_header_soundtrack"
+            tools:listitem="@layout/soundtrack_metadata_item" />
+
+        <View
+            android:id="@+id/border_bottom_recycler_view_soundtrack_metadata"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:background="@color/secondary_color"
+            app:layout_constraintBottom_toTopOf="@+id/container_soundtrack_playback"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_soundtrack_metadata" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_soundtrack_playback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/border_bottom_recycler_view_soundtrack_metadata" >
+
+            <ImageButton
+                android:id="@+id/image_button_previous"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"
+                android:src="@android:drawable/ic_media_previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_button_pause"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_pause"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"
+                android:src="@android:drawable/ic_media_pause"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_button_resume"
+                app:layout_constraintStart_toEndOf="@+id/image_button_previous"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_resume"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"
+                android:src="@android:drawable/ic_media_play"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_button_next"
+                app:layout_constraintStart_toEndOf="@+id/image_button_pause"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button_next"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/colorPrimary"
+                android:src="@android:drawable/ic_media_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_button_resume"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

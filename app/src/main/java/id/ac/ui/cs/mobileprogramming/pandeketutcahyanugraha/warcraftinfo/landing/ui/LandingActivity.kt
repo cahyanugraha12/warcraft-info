@@ -7,7 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 // Used for Hilt Dependency Injection, move to wherever activity assigned as launcher
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.WarcraftInfoApplication
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.auctionhouse.ui.AuctionHouseActivity
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.calculator.ui.CalculatorActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.character.ui.CharacterActivity
+import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.credits.ui.CreditsActivity
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.databinding.LandingActivityBinding
 import id.ac.ui.cs.mobileprogramming.pandeketutcahyanugraha.warcraftinfo.soundtrack.ui.SoundtrackActivity
 
@@ -49,6 +51,16 @@ class LandingActivity : AppCompatActivity() {
         }
         binding.linearLayoutButtonSoundtrack.setOnClickListener {
             val intent = Intent(this, SoundtrackActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            startActivity(intent)
+        }
+        binding.buttonCredits.setOnClickListener {
+            val intent = Intent(this, CreditsActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+            startActivity(intent)
+        }
+        binding.buttonCalculator.setOnClickListener {
+            val intent = Intent(this, CalculatorActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
             startActivity(intent)
         }

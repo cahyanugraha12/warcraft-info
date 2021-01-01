@@ -107,4 +107,11 @@
     <string name="description_notification_soundtrack_service">
         Kanal Notifikasi untuk Service Soundtrack guna menginformasikan status soundtrack yang sedang diputar
     </string>
+
+    <string name="label_credits">Credits</string>
+    <string name="credits">Terima kasih telah menggunakan Warcraft Info, anda yang berlokasi di %1$s, %2$s</string>
+    <string name="error_credits_activity_require_location">Maaf, fitur ini membutuhkan izin untuk mengakses lokasi</string>
+    <string name="error_credits_activity_cannot_access_location">Terima kasih telah menggunakan Warcraft Info! Sayangnya aplikasi gagal mendapatkan lokasi anda :(</string>
+
+    <string name="label_calculator">Kalkulator</string>
 </resources>

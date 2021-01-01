@@ -72,4 +72,7 @@ object WarcraftInfoConstant {
     const val ACTION_STOP = "id.ac.ui.cs.mobileprogramming.warcraftinfo.soundtrack.ACTION_STOP"
     const val SOUNDTRACK_NOTIFICATION_CHANNEL_ID = "28122020"
     const val SOUNDTRACK_NOTIFICATION_ID = 28122020
+
+    // Location Related Constants
+    const val ACCESS_LOCATION_REQUEST_CODE = 1204
 }

@@ -107,4 +107,11 @@
     <string name="description_notification_soundtrack_service">
         Notification Channel for Service Soundtrack to inform status of currently played soundtrack
     </string>
+
+    <string name="label_credits">Credits</string>
+    <string name="credits">Thank you for using Warcraft Info, you that are located at %1$s, %2$s</string>
+    <string name="error_credits_activity_require_location">Sorry, this feature require permission to access location</string>
+    <string name="error_credits_activity_cannot_access_location">Thank you for using Warcraft Info! Application fails to retrieve location, thought :(</string>
+
+    <string name="label_calculator">Calculator</string>
 </resources>

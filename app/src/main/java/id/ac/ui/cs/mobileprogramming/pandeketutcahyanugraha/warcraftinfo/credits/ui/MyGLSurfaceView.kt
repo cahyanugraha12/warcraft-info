@@ -34,7 +34,6 @@ class MyGLSurfaceView(context: Context, attributes: AttributeSet? = null)
             0.0f, 0.622008459f, 0.0f,
             0.3f, -0.311004243f, 0.0f,
             0.6f, 0.622008459f, 0.0f
-//            0.9f, -0.311004243f, 0.0f
         )
 
         override fun onSurfaceCreated(unused: GL10, config: EGLConfig) {
